@@ -1,18 +1,11 @@
-# Use official Node.js image
-FROM node:18
+# Use official NGINX image
+FROM nginx:alpine
 
-# Set working directory
-WORKDIR /app
+# Remove the default nginx index page
+RUN rm -rf /usr/share/nginx/html/*
 
-# Copy package files and install dependencies
-COPY package*.json ./
-RUN npm install
+# Copy your HTML/CSS files to the nginx directory
+COPY . /usr/share/nginx/html
 
-# Copy the rest of the app
-COPY . .
-
-# Expose the port your app runs on
-EXPOSE 8080
-
-# Run the application
-CMD ["node", "index.js"]
+# Expose default HTTP port
+EXPOSE 80
