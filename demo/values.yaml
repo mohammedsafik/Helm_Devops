@@ -6,7 +6,7 @@ replicacount: 2
 imagename: my-js-app
 image:  mohammedsafik/myapphelm:latest # Replace with your actual Docker Hub image
 pullPolicy: Always
-port: 8080
+port: 80
 
 service:
   type: NodePort
